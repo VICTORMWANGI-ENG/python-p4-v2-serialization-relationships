@@ -15,7 +15,8 @@ db.init_app(app)
 
 @app.route('/')
 def index():
-    return '<h1>Zoo app</h1>'
+    z1 = Zookeeper.query.first()
+    return make_response(z1.to_dict(only=('name',)))
 
 
 @app.route('/animal/<int:id>')
